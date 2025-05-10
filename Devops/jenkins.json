@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    stages {
+        stage("Stage 1") {
+            steps {
+                script {
+                    sh """
+                    echo Build number: ${env.BUILD_NUMBER}
+                    """
+                }
+            }
+        }
+        stage("Stage 2") {
+            steps {
+                script {
+                    sh """
+                    cd /home/jenkin_ws
+                    ls
+                    git clone git@github.com:Balaji22993/nginx_demo.git
+                    """
+                }
+            }
+        }
+    }
+}
